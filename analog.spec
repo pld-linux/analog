@@ -6,7 +6,7 @@ Release:	1
 Copyright:	distributable
 Group:		Utilities
 Group(pl):	Narzêdzia
-Source:		ftp://ftp.statslab.cam.ac.uk/pub/users/sret1/%{name}/%{name}%{version}.tar.gz
+Source:		ftp://ftp.nhl.nl/pub/unix/%{name}/%{name}%{version}.tar.gz
 Patch:		analog-config.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/

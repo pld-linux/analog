@@ -41,7 +41,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 %patch0 -p1
 
 %build
-make CEXTRAFLAGS="$RPM_OPT_FLAGS" %{name}
+%{__make} CEXTRAFLAGS="$RPM_OPT_FLAGS" %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT

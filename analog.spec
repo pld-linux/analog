@@ -38,8 +38,7 @@ opcji w /etc/analog.cfg poprzez wykonanie komendy:
 `analog -form +O/home/httpd/html/usage/anlgform.html`.
 
 %prep
-#%setup -q -n %{name}%{version}
-%setup -n %{name}%{version}
+%setup -q -n %{name}%{version}
 %patch0 -p1
 
 %build

@@ -1,0 +1,129 @@
+diff -urN analog3.31.orig/analhead.h analog3.31/analhead.h
+--- analog3.31.orig/analhead.h	Sat Jun 19 13:19:21 1999
++++ analog3.31/analhead.h	Sat Jul 31 21:30:45 1999
+@@ -16,19 +16,19 @@
+      them except MANDATORYCONFIGFILE can be changed at run time as well. ***/
+ 
+ #ifndef HOSTNAME
+-#define HOSTNAME "[my organisation]"
++#define HOSTNAME "PLD Linux Server"
+ /* the name of your organisation or WWW host. This is used for printing
+    at the top of the output */
+ #endif
+ 
+ #ifndef HOSTURL
+-#define HOSTURL "none"
++#define HOSTURL "/"
+ /* the URL of your host's home page, for linking to at the top of the
+    output; use "none" for no linking. */
+ #endif
+ 
+ #ifndef HTTPDIR
+-#define HTTPDIR "/usr/local/etc/httpd/"
++#define HTTPDIR "/etc/httpd/"
+ #endif
+ #ifndef ANALOGDIR
+ #define ANALOGDIR HTTPDIR"analog/"
+@@ -42,25 +42,25 @@
+    "/usr/local/etc/httpd/analog/" */
+ 
+ #ifndef LOGFILE
+-#define LOGFILE HTTPDIR"logs/access_log"
++#define LOGFILE "/var/log/httpd/access_log"
+ /* The name of the default logfile. Can be a list, separated by commas
+    (but no spaces), and can include wild cards. */
+ #endif
+ 
+ #ifndef IMAGEDIR
+-#define IMAGEDIR "images/"
++#define IMAGEDIR "/icons/"
+ /* URL of the directory where the images for the graphical reports live.
+    The URL can be absolute, or relative to the output page: e.g., just the
+    empty string "" for the same directory as the output page. */
+ #endif
+ 
+ #ifndef LANGDIR
+-#define LANGDIR ANALOGDIR"lang/"
++#define LANGDIR "/usr/share/analog/lang/"
+ /* Directory where the language files live. */
+ #endif
+ 
+ #ifndef DEFAULTCONFIGFILE
+-#define DEFAULTCONFIGFILE ANALOGDIR"analog.cfg"
++#define DEFAULTCONFIGFILE "/etc/analog.cfg"
+ /* the name of the default configuration file; see README.html for a
+    description of this file. Use "none" (NOT ANALOGDIR"none"!) for no
+    configuration file. */
+@@ -101,7 +101,7 @@
+ /*** The rest of the options can be overridden when the program is run. ***/
+ 
+ #ifndef OUTFILE
+-#define OUTFILE "stdout"
++#define OUTFILE "/home/httpd/html/usage/analog.html"
+ /* The default file for output. Use "stdout" for stdout. */
+ #endif
+ 
+@@ -116,11 +116,11 @@
+ #endif
+ 
+ #ifndef NODNS
+-#define DNSFILE ANALOGDIR"dnscache"
++#define DNSFILE "/var/state/analog/dnscache"
+ /* where to store resolved addresses so we don't have to look them up next
+    time */
+ 
+-#define DNSLOCKFILE ANALOGDIR"dnslock"
++#define DNSLOCKFILE "/var/lock/dnslock"
+ /* A lock file to stop two processes trying to write the DNSFILE at once */ 
+ 
+ #define DNS (DNS_NONE)
+diff -urN analog3.31.orig/analog.cfg analog3.31/analog.cfg
+--- analog3.31.orig/analog.cfg	Sat May 15 16:43:58 1999
++++ analog3.31/analog.cfg	Sat Jul 31 21:44:01 1999
+@@ -8,7 +8,8 @@
+ # REQINCLUDE pages
+ #
+ # If you have a LOGFORMAT command it must go here, above the LOGFILE command.
+-LOGFILE logfile.log
++LOGFILE /var/log/httpd/access_log
++#LANGUAGE POLISH
+ HOSTNAME "[my organisation]"
+ LINKINCLUDE pages
+ REFLINKINCLUDE pages
+diff -urN analog3.31.orig/anlgform.c analog3.31/anlgform.c
+--- analog3.31.orig/anlgform.c	Sat Jun 19 13:18:54 1999
++++ analog3.31/anlgform.c	Sat Jul 31 21:29:58 1999
+@@ -7,7 +7,7 @@
+ /*** anlgform.c; the cgi front end for analog ***/
+ 
+ /* You must uncomment the next line, and put where the analog executable is */
+-/* #define ANALOG "/usr/local/etc/httpd/analog/analog" */
++#define ANALOG "/usr/bin/analog"
+ 
+ #ifdef WIN32
+ #define ANALOG "\\analog\\analog.exe"
+diff -urN analog3.31.orig/anlgform.html analog3.31/anlgform.html
+--- analog3.31.orig/anlgform.html	Tue Jun  8 22:00:25 1999
++++ analog3.31/anlgform.html	Sat Jul 31 21:29:58 1999
+@@ -3,7 +3,7 @@
+ </head>
+ 
+ <body>
+-<h1><!-- img src="/images/analogo.gif" alt="" --> Analog form interface</h1>
++<h1><img src="/icons/analogo.gif" alt="Analog" --> Analog form interface</h1>
+ 
+ <!-- All platforms should uncomment the img tag above, edited if necessary -->
+ 
+@@ -22,10 +22,10 @@
+ 
+ <!-- Many systems will want the IMAGEDIR to be different on the form... -->
+ <!-- than from the commandline, because it should not be within /cgi-bin/ -->
+-<!-- input type=hidden name="ie" value="/images/" -->
++<!-- input type=hidden name="ie" value="/icons/" -->
+ 
+ <!-- Some users will want to set their logfile like this -->
+-<!-- input type=hidden name="lo" value="/usr/local/etc/httpd/logs/access_log" -->
++<!-- input type=hidden name="lo" value="/var/log/httpd/access_log" -->
+ 
+ <!-- A few broken systems need a TZ line to specify their timezone -->
+ <!-- input type=hidden name="TZ" value="GMT0BST" -->

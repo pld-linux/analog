@@ -1,13 +1,13 @@
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
-Version:	5.31
+Version:	5.32
 Release:	1
 License:	distributable
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
 Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
-# Source0-md5:	ae1cc7bd32b054b3655634aad50050e9
+# Source0-md5:	077a2d43c8f5c2bddf37129ca63ec1f8
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-png.patch
 Requires:	webserver

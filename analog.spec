@@ -44,7 +44,9 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 %patch1 -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags}" CEXTRAFLAGS="%{rpmcflags}" %{name}
+%{__make} %{name} \
+	CFLAGS="%{rpmcflags}" \
+	CEXTRAFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,8 +1,8 @@
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
-Version:	5.01
-Release:	2
+Version:	5.03
+Release:	1
 License:	Distributable
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge

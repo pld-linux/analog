@@ -35,7 +35,6 @@ modified /etc/analog.cfg.
 Interfejs w postaci formularza do programu analog. Powiniene¶
 wygenerowaæ nowy plik formularza po ustawieniu odpowiednich
 opcji w /etc/analog.cfg poprzez wykonanie komendy:
-`analog -form +O/home/httpd/html/usage/anlgform.html`.
 
 %prep
 %setup -q -n %{name}%{version}
@@ -59,7 +58,7 @@ install		lang/*		$RPM_BUILD_ROOT%{_datadir}/%{name}/lang
 install		analog.cfg	$RPM_BUILD_ROOT/etc
 install		images/*	$RPM_BUILD_ROOT/home/httpd/icons
 install		anlgform.html	$RPM_BUILD_ROOT/home/httpd/html/usage
-#install		anlgform.cgi	$RPM_BUILD_ROOT/home/httpd/cgi-bin
+install		anlgform.pl	$RPM_BUILD_ROOT/home/httpd/cgi-bin
 touch				$RPM_BUILD_ROOT/home/httpd/html/usage/analog.html
 
 gzip -9nf docs/* lang/*.html
@@ -79,7 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %dir /home/httpd/html/usage
 %verify(not size mtime md5) /home/httpd/html/usage/analog.html
 
-#%files form
-#%defattr(644,root,root,755)
-#%config(noreplace) %verify(not size mtime md5) /home/httpd/html/usage/anlgform.html
-#%attr(755,root,root) /home/httpd/cgi-bin/anlgform.cgi
+%files form
+%defattr(644,root,root,755)
+%config(noreplace) %verify(not size mtime md5) /home/httpd/html/usage/anlgform.html
+%attr(755,root,root) /home/httpd/cgi-bin/anlgform.pl

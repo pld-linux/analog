@@ -10,7 +10,7 @@ Source:		ftp://ftp.nhl.nl/pub/unix/analog/%{name}%{version}.tar.gz
 Patch0:		analog-config.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/
-BuildRoot:	/tmp/%{name}-%{version}-buildroot
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 WWW server logfile analysis program with lots of features.

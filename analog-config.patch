@@ -51,7 +51,7 @@ diff -urN analog4.03.orig/anlghea2.h analog4.03/anlghea2.h
  
  #ifndef NODNS
 -#define DNSFILE ANALOGDIR"dnscache"
-+#define DNSFILE ANALOGDIR "/var/state/analog/dnscache"
++#define DNSFILE ANALOGDIR "/var/lib/analog/dnscache"
  /* where to store resolved addresses so we don't have to look them up next
     time */
  

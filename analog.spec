@@ -2,7 +2,7 @@ Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
 Version:	5.01
-Release:	1
+Release:	2
 License:	Distributable
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge
@@ -44,7 +44,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 %patch0 -p1
 
 %build
-%{__make} CEXTRAFLAGS="%{rpmcflags}" %{name}
+%{__make} CFLAGS="%{rpmcflags}" CEXTRAFLAGS="%{rpmcflags}" %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT

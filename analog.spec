@@ -3,11 +3,12 @@ Summary(pl):	Analizator logów serwera www
 Name:		analog
 Version:	4.16
 Release:	1
-Copyright:	distributable
-Group:		Utilities
-Group(pl):	Narzêdzia
+License:	Distributable
+Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
+Group(pl):	Sieciowe/Narzêdzia
 Source0:	ftp://ftp.nhl.nl/pub/unix/analog/%{name}-%{version}.tar.gz
-Patch0:		analog-config.patch
+Patch0:		%{name}-config.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -21,9 +22,10 @@ Analizator logów serwera www z wieloma opcjami.
 %package form
 Summary:	Form interface to analog
 Summary(pl):	Interfejs w postaci formularza do analoga
+Group:		Networking/Utilities
+Group(de):	Netzwerkwesen/Werkzeuge
+Group(pl):	Sieciowe/Narzêdzia
 Requires:	%{name} = %{version}
-Group:		Utilities
-Group(pl):	Narzêdzia
 
 %description form
 Form interface to the analog httpd log analysis program. You should
@@ -34,14 +36,15 @@ modified /etc/analog.cfg.
 %description -l pl form
 Interfejs w postaci formularza do programu analog. Powiniene¶
 wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
-/etc/analog.cfg poprzez wykonanie komendy:
+/etc/analog.cfg poprzez wykonanie polecenia: 'analog -form
++O/home/httpd/html/anlgform.html'
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p1
 
 %build
-%{__make} CEXTRAFLAGS="$RPM_OPT_FLAGS" %{name}
+%{__make} CEXTRAFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g}" %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -49,7 +52,7 @@ install -d $RPM_BUILD_ROOT/home/httpd/{icons,cgi-bin,html/usage} \
 	$RPM_BUILD_ROOT{%{_var}/lib/%{name},%{_datadir}/%{name}/lang} \
 	$RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}}
 
-install -s analog $RPM_BUILD_ROOT%{_bindir}
+install analog $RPM_BUILD_ROOT%{_bindir}
 install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.cfg
 install lang/* $RPM_BUILD_ROOT%{_datadir}/%{name}/lang
 install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}

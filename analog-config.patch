@@ -1,6 +1,6 @@
-diff -urN analog4.02.orig/analog.cfg analog4.02/analog.cfg
---- analog4.02.orig/analog.cfg	Sat Jan 29 17:00:59 2000
-+++ analog4.02/analog.cfg	Fri Feb  4 00:12:37 2000
+diff -urN analog4.03.orig/analog.cfg analog4.03/analog.cfg
+--- analog4.03.orig/analog.cfg	Sat Jan 29 17:00:59 2000
++++ analog4.03/analog.cfg	Fri Feb  4 00:12:37 2000
 @@ -7,7 +7,8 @@
  # There is a much more extensive configuration file in examples/big.cfg
  #
@@ -11,9 +11,9 @@ diff -urN analog4.02.orig/analog.cfg analog4.02/analog.cfg
  # HOSTNAME "[my organisation]"
  # REQINCLUDE pages
  LINKINCLUDE pages
-diff -urN analog4.02.orig/anlgform.html analog4.02/anlgform.html
---- analog4.02.orig/anlgform.html	Mon Nov  8 20:33:04 1999
-+++ analog4.02/anlgform.html	Fri Feb  4 00:12:38 2000
+diff -urN analog4.03.orig/anlgform.html analog4.03/anlgform.html
+--- analog4.03.orig/anlgform.html	Mon Nov  8 20:33:04 1999
++++ analog4.03/anlgform.html	Fri Feb  4 00:12:38 2000
 @@ -3,8 +3,7 @@
  </head>
  
@@ -37,9 +37,9 @@ diff -urN analog4.02.orig/anlgform.html analog4.02/anlgform.html
  
  <hr>
  <h2>1. Report choices</h2>
-diff -urN analog4.02.orig/anlghea2.h analog4.02/anlghea2.h
---- analog4.02.orig/anlghea2.h	Sat Jan 29 17:00:59 2000
-+++ analog4.02/anlghea2.h	Fri Feb  4 00:12:38 2000
+diff -urN analog4.03.orig/anlghea2.h analog4.03/anlghea2.h
+--- analog4.03.orig/anlghea2.h	Sat Jan 29 17:00:59 2000
++++ analog4.03/anlghea2.h	Fri Feb  4 00:12:38 2000
 @@ -48,16 +48,16 @@
  #endif
  
@@ -60,9 +60,9 @@ diff -urN analog4.02.orig/anlghea2.h analog4.02/anlghea2.h
  /* A lock file to stop two processes trying to write the DNSFILE at once */ 
  
  #define DNS (DNS_NONE)
-diff -urN analog4.02.orig/anlghead.h analog4.02/anlghead.h
---- analog4.02.orig/anlghead.h	Sat Jan 29 17:01:09 2000
-+++ analog4.02/anlghead.h	Fri Feb  4 00:12:39 2000
+diff -urN analog4.03.orig/anlghead.h analog4.03/anlghead.h
+--- analog4.03.orig/anlghead.h	Sat Jan 29 17:01:09 2000
++++ analog4.03/anlghead.h	Fri Feb  4 00:12:39 2000
 @@ -19,19 +19,19 @@
  #define ANLGHEAD
  
@@ -81,7 +81,7 @@ diff -urN analog4.02.orig/anlghead.h analog4.02/anlghead.h
  #endif
  
  #ifndef ANALOGDIR
--#define ANALOGDIR "/usr/local/analog4.02/"
+-#define ANALOGDIR "/usr/local/analog4.03/"
 +#define ANALOGDIR ""
  #endif
  /* The directory where your analog stuff lives (or will live). You need to
@@ -117,15 +117,15 @@ diff -urN analog4.02.orig/anlghead.h analog4.02/anlghead.h
  /* the name of the default configuration file; see README.html for a
     description of this file. Use "none" (NOT ANALOGDIR"none"!) for no
     configuration file. */
---- analog4.02.orig/anlgform.pl Sat Jan 29 17:00:59 2000
-+++ analog4.02/anlgform.pl     Sat Feb  5 02:08:38 2000
+--- analog4.03.orig/anlgform.pl Sat Jan 29 17:00:59 2000
++++ analog4.03/anlgform.pl     Sat Feb  5 02:08:38 2000
 @@ -14,6 +14,7 @@
  # 1) uncomment (remove everything before $analog) and edit one of the next
  # two
  #    lines to give the location (full pathname) of the analog executable.
- #       Unix: $analog = '/usr/local/etc/httpd/analog4.02/analog';
+ #       Unix: $analog = '/usr/local/etc/httpd/analog4.03/analog';
 +$analog = '/usr/bin/analog';
- #       Windows: $analog = 'C:\program files\analog 4.02\analog.exe';
+ #       Windows: $analog = 'C:\program files\analog 4.03\analog.exe';
  # 2) If you're on Unix, edit the first line in this file to give the location
  #    of Perl (don't remove the #! though).
 

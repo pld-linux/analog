@@ -1,12 +1,12 @@
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
-Version:	4.03
-Release:	2
+Version:	4.16
+Release:	1
 Copyright:	distributable
 Group:		Utilities
 Group(pl):	Narzêdzia
-Source0:	ftp://ftp.nhl.nl/pub/unix/analog/%{name}%{version}.tar.gz
+Source0:	ftp://ftp.nhl.nl/pub/unix/analog/%{name}-%{version}.tar.gz
 Patch0:		analog-config.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/
@@ -37,7 +37,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 /etc/analog.cfg poprzez wykonanie komendy:
 
 %prep
-%setup -q -n %{name}%{version}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 
 %build

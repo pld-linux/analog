@@ -1,5 +1,5 @@
 Summary:	WWW server logfile analysis program
-Summary(pl):	Analizator logów serwera www
+Summary(pl):	Analizator logów serwera WWW
 Name:		analog
 Version:	5.32
 Release:	1
@@ -18,7 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 WWW server logfile analysis program with lots of features.
 
 %description -l pl
-Analizator logów serwera www z wieloma opcjami.
+Analizator logów serwera WWW z wieloma opcjami.
 
 %package form
 Summary:	Form interface to analog

@@ -8,6 +8,7 @@ Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
 Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-png.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -37,8 +38,9 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 +O/home/httpd/html/anlgform.html'
 
 %prep
-%setup -q
+%setup  -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__make} CFLAGS="%{rpmcflags}" CEXTRAFLAGS="%{rpmcflags}" %{name}

@@ -117,3 +117,15 @@ diff -urN analog4.02.orig/anlghead.h analog4.02/anlghead.h
  /* the name of the default configuration file; see README.html for a
     description of this file. Use "none" (NOT ANALOGDIR"none"!) for no
     configuration file. */
+--- analog4.02.orig/anlgform.pl Sat Jan 29 17:00:59 2000
++++ analog4.02/anlgform.pl     Sat Feb  5 02:08:38 2000
+@@ -14,6 +14,7 @@
+ # 1) uncomment (remove everything before $analog) and edit one of the next
+ # two
+ #    lines to give the location (full pathname) of the analog executable.
+ #       Unix: $analog = '/usr/local/etc/httpd/analog4.02/analog';
++$analog = '/usr/bin/analog';
+ #       Windows: $analog = 'C:\program files\analog 4.02\analog.exe';
+ # 2) If you're on Unix, edit the first line in this file to give the location
+ #    of Perl (don't remove the #! though).
+

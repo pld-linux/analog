@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %dir %{_datadir}/analog
 %attr(775,root,http) %dir /var/state/analog
 %config(noreplace) %verify(not size mtime md5) /etc/analog.cfg
-%attr(775,root,root) %{_bindir}/analog
+%attr(755,root,root) %{_bindir}/analog
 %{_datadir}/analog/lang/*.*
 /home/httpd/icons/*.gif
 %attr(755,root,root) %dir /home/httpd/html/usage

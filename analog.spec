@@ -61,7 +61,7 @@ install		anlgform.html	$RPM_BUILD_ROOT/home/httpd/html/usage
 install		anlgform.pl	$RPM_BUILD_ROOT/home/httpd/cgi-bin
 touch				$RPM_BUILD_ROOT/home/httpd/html/usage/analog.html
 
-gzip -9nf docs/* lang/*.html
+gzip -9nf docs/*.txt lang/*.html
 %clean
 rm -rf $RPM_BUILD_ROOT
 

@@ -1,6 +1,6 @@
-diff -urN analog3.31.orig/analhead.h analog3.31/analhead.h
---- analog3.31.orig/analhead.h	Sat Jun 19 13:19:21 1999
-+++ analog3.31/analhead.h	Sat Jul 31 21:30:45 1999
+diff -urN analog3.32.orig/analhead.h analog3.32/analhead.h
+--- analog3.32.orig/analhead.h	Sat Jun 19 13:19:21 1999
++++ analog3.32/analhead.h	Sat Jul 31 21:30:45 1999
 @@ -16,19 +16,19 @@
       them except MANDATORYCONFIGFILE can be changed at run time as well. ***/
  
@@ -77,9 +77,9 @@ diff -urN analog3.31.orig/analhead.h analog3.31/analhead.h
  /* A lock file to stop two processes trying to write the DNSFILE at once */ 
  
  #define DNS (DNS_NONE)
-diff -urN analog3.31.orig/analog.cfg analog3.31/analog.cfg
---- analog3.31.orig/analog.cfg	Sat May 15 16:43:58 1999
-+++ analog3.31/analog.cfg	Sat Jul 31 21:44:01 1999
+diff -urN analog3.32.orig/analog.cfg analog3.32/analog.cfg
+--- analog3.32.orig/analog.cfg	Sat May 15 16:43:58 1999
++++ analog3.32/analog.cfg	Sat Jul 31 21:44:01 1999
 @@ -8,7 +8,8 @@
  # REQINCLUDE pages
  #
@@ -90,9 +90,9 @@ diff -urN analog3.31.orig/analog.cfg analog3.31/analog.cfg
  HOSTNAME "[my organisation]"
  LINKINCLUDE pages
  REFLINKINCLUDE pages
-diff -urN analog3.31.orig/anlgform.c analog3.31/anlgform.c
---- analog3.31.orig/anlgform.c	Sat Jun 19 13:18:54 1999
-+++ analog3.31/anlgform.c	Sat Jul 31 21:29:58 1999
+diff -urN analog3.32.orig/anlgform.c analog3.32/anlgform.c
+--- analog3.32.orig/anlgform.c	Sat Jun 19 13:18:54 1999
++++ analog3.32/anlgform.c	Sat Jul 31 21:29:58 1999
 @@ -7,7 +7,7 @@
  /*** anlgform.c; the cgi front end for analog ***/
  
@@ -102,9 +102,9 @@ diff -urN analog3.31.orig/anlgform.c analog3.31/anlgform.c
  
  #ifdef WIN32
  #define ANALOG "\\analog\\analog.exe"
-diff -urN analog3.31.orig/anlgform.html analog3.31/anlgform.html
---- analog3.31.orig/anlgform.html	Tue Jun  8 22:00:25 1999
-+++ analog3.31/anlgform.html	Sat Jul 31 21:29:58 1999
+diff -urN analog3.32.orig/anlgform.html analog3.32/anlgform.html
+--- analog3.32.orig/anlgform.html	Tue Jun  8 22:00:25 1999
++++ analog3.32/anlgform.html	Sat Jul 31 21:29:58 1999
 @@ -3,7 +3,7 @@
  </head>
  

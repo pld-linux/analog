@@ -11,7 +11,7 @@ Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-png.patch
 Requires:	webserver
-URL:		http://www.statslab.cam.ac.uk/~sret1/analog/
+URL:		http://www.analog.cx/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description

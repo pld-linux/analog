@@ -1,15 +1,14 @@
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera WWW
 Name:		analog
-Version:	5.32
-Release:	1
-License:	distributable
+Version:	6.0
+Release:	0.1
+License:	GPL
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
 Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
-# Source0-md5:	077a2d43c8f5c2bddf37129ca63ec1f8
+# Source0-md5:	743d03a16eb8c8488205ae63cdb671cd
 Patch0:		%{name}-config.patch
-Patch1:		%{name}-png.patch
 Requires:	webserver
 URL:		http://www.analog.cx/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,7 +40,6 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 %prep
 %setup  -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__make} %{name} \
@@ -77,6 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/analog
 %{_datadir}/analog/lang/*.*
 /home/httpd/icons/*.gif
+/home/httpd/icons/*.png
 %attr(755,root,root) %dir /home/httpd/html/usage
 %verify(not size mtime md5) /home/httpd/html/usage/analog.html
 

@@ -7,6 +7,7 @@ License:	distributable
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
 Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
+# Source0-md5:	ae1cc7bd32b054b3655634aad50050e9
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-png.patch
 Requires:	webserver

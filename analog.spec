@@ -29,7 +29,7 @@ regenerate the form file to customize it for your server by running
 'analog -form +O/home/httpd/html/anlgform.html' after you have
 modified /etc/analog.cfg.
 
-%description -l pl form
+%description form -l pl
 Interfejs w postaci formularza do programu analog. Powiniene¶
 wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 /etc/analog.cfg poprzez wykonanie polecenia: 'analog -form

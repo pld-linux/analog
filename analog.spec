@@ -44,7 +44,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 %patch0 -p1
 
 %build
-%{__make} CEXTRAFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O0 -g}" %{name}
+%{__make} CEXTRAFLAGS="%{rpmcflags}" %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT

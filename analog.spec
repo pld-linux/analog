@@ -5,10 +5,6 @@ Version:	5.03
 Release:	1
 License:	distributable
 Group:		Networking/Utilities
-Group(de):	Netzwerkwesen/Werkzeuge
-Group(es):	Red/Utilitarios
-Group(pl):	Sieciowe/Narzêdzia
-Group(pt_BR):	Rede/Utilitários
 Source0:	ftp://ftp.nhl.nl/pub/unix/analog/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Requires:	webserver
@@ -25,10 +21,6 @@ Analizator logów serwera www z wieloma opcjami.
 Summary:	Form interface to analog
 Summary(pl):	Interfejs w postaci formularza do analoga
 Group:		Networking/Utilities
-Group(de):	Netzwerkwesen/Werkzeuge
-Group(es):	Red/Utilitarios
-Group(pl):	Sieciowe/Narzêdzia
-Group(pt_BR):	Rede/Utilitários
 Requires:	%{name} = %{version}
 
 %description form

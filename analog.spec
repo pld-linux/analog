@@ -2,7 +2,7 @@ Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
 Version:	4.03
-Release:	1
+Release:	2
 Copyright:	distributable
 Group:		Utilities
 Group(pl):	Narzêdzia
@@ -47,7 +47,7 @@ make CEXTRAFLAGS="$RPM_OPT_FLAGS" %{name}
 rm -rf $RPM_BUILD_ROOT
 
 install -d	$RPM_BUILD_ROOT/home/httpd/{icons,cgi-bin,html/usage}
-install -d	$RPM_BUILD_ROOT%{_var}/state/%{name}
+install -d	$RPM_BUILD_ROOT%{_var}/lib/%{name}
 install -d	$RPM_BUILD_ROOT%{_datadir}/%{name}/lang
 install -d	$RPM_BUILD_ROOT%{_bindir}
 install -d      $RPM_BUILD_ROOT/etc
@@ -70,7 +70,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/* lang/*.gz
 %attr(755,root,root) %dir %{_datadir}/analog/lang
 %attr(755,root,root) %dir %{_datadir}/analog
-%attr(775,root,http) %dir /var/state/analog
+%attr(775,root,http) %dir /var/lib/analog
 %config(noreplace) %verify(not size mtime md5) /etc/analog.cfg
 %attr(755,root,root) %{_bindir}/analog
 %{_datadir}/analog/lang/*.*

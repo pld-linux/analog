@@ -1,11 +1,11 @@
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera www
 Name:		analog
-Version:	5.03
+Version:	5.22
 Release:	1
 License:	distributable
 Group:		Networking/Utilities
-Source0:	ftp://ftp.nhl.nl/pub/unix/analog/%{name}-%{version}.tar.gz
+Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
 Patch0:		%{name}-config.patch
 Requires:	webserver
 URL:		http://www.statslab.cam.ac.uk/~sret1/analog/

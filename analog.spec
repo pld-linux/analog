@@ -58,14 +58,12 @@ install anlgform.pl $RPM_BUILD_ROOT/home/httpd/cgi-bin
 
 touch $RPM_BUILD_ROOT/home/httpd/html/usage/analog.html
 
-gzip -9nf docs/*.txt lang/*.html
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* lang/*.gz
+%doc docs/* lang/*
 %attr(755,root,root) %dir %{_datadir}/analog/lang
 %attr(755,root,root) %dir %{_datadir}/analog
 %attr(775,root,http) %dir /var/lib/analog

@@ -1,19 +1,22 @@
-diff -urN analog4.03.orig/analog.cfg analog4.03/analog.cfg
---- analog4.03.orig/analog.cfg	Sat Jan 29 17:00:59 2000
-+++ analog4.03/analog.cfg	Fri Feb  4 00:12:37 2000
-@@ -7,7 +7,8 @@
+diff -urN analog-4.16.org/analog.cfg analog-4.16/analog.cfg
+--- analog-4.16.org/analog.cfg	Tue Feb 13 16:09:08 2001
++++ analog-4.16/analog.cfg	Mon Feb 26 21:04:14 2001
+@@ -9,9 +9,10 @@
  # There is a much more extensive configuration file in examples/big.cfg
  #
  # If you need a LOGFORMAT command it must go here, above the LOGFILE command.
 -# LOGFILE logfile.log
 +LOGFILE /var/log/httpd/access_log
 +LANGUAGE POLISH
- # HOSTNAME "[my organisation]"
+ # OUTFILE outfile.html
+-# HOSTNAME "[my organisation]"
++HOSTNAME "[PLD Linux Server]"
  # REQINCLUDE pages
  LINKINCLUDE pages
-diff -urN analog4.03.orig/anlgform.html analog4.03/anlgform.html
---- analog4.03.orig/anlgform.html	Mon Nov  8 20:33:04 1999
-+++ analog4.03/anlgform.html	Fri Feb  4 00:12:38 2000
+ REFLINKINCLUDE *
+diff -urN analog-4.16.org/anlgform.html analog-4.16/anlgform.html
+--- analog-4.16.org/anlgform.html	Tue Feb 13 16:09:08 2001
++++ analog-4.16/anlgform.html	Mon Feb 26 21:06:02 2001
 @@ -3,8 +3,7 @@
  </head>
  
@@ -24,23 +27,35 @@ diff -urN analog4.03.orig/anlgform.html analog4.03/anlgform.html
  <!-- Make the edits below. You also need to edit anlgform.pl. -->
  
  <!-- First, uncomment the img tag above, edited if necessary. -->
-@@ -24,10 +23,10 @@
+@@ -24,11 +23,11 @@
  
- <!-- Many systems will want the IMAGEDIR to be different on the form... -->
- <!-- than from the commandline, because it should not be within /cgi-bin/ -->
+ <!-- Many systems will want the IMAGEDIR to be different on the form -->
+ <!-- than from the command line, because it should not be within /cgi-bin/ -->
 -<!-- input type=hidden name="IMAGEDIR" value="/images/" -->
 +<!-- input type=hidden name="IMAGEDIR" value="/icons/" -->
  
- <!-- Some users will want to set their logfile like this -->
+ <!-- Some users will want to set their logfile like this. If you do, you -->
+ <!-- musn't also specify the LOGFILE in the "cg" configuration file above. -->
 -<!-- input type=hidden name="LOGFILE" value="/usr/local/etc/httpd/logs/access_log" -->
 +<!-- input type=hidden name="LOGFILE" value="/usr/var/httpd/log/access_log" -->
  
- <hr>
- <h2>1. Report choices</h2>
-diff -urN analog4.03.orig/anlghea2.h analog4.03/anlghea2.h
---- analog4.03.orig/anlghea2.h	Sat Jan 29 17:00:59 2000
-+++ analog4.03/anlghea2.h	Fri Feb  4 00:12:38 2000
-@@ -48,16 +48,16 @@
+ <!-- After you've made these edits, you can remove the "strong" lines below -->
+ 
+diff -urN analog-4.16.org/anlgform.pl analog-4.16/anlgform.pl
+--- analog-4.16.org/anlgform.pl	Tue Feb 13 16:09:08 2001
++++ analog-4.16/anlgform.pl	Mon Feb 26 21:03:22 2001
+@@ -19,6 +19,7 @@
+ #    of Perl (don't remove the #! though).
+ # 3) You also need to edit anlgform.html if you want to use the form.
+ # 4) Add to the forbidden commands below if you want.
++$analog = '/usr/bin/analog';
+ 
+ @forbidden = qw(LOGFORMAT APACHELOGFORMAT DEFAULTLOGFORMAT
+ 		APACHEDEFAULTLOGFORMAT HEADERFILE FOOTERFILE UNCOMPRESS
+diff -urN analog-4.16.org/anlghea2.h analog-4.16/anlghea2.h
+--- analog-4.16.org/anlghea2.h	Tue Feb 13 16:09:08 2001
++++ analog-4.16/anlghea2.h	Mon Feb 26 20:59:43 2001
+@@ -50,16 +50,16 @@
  #endif
  
  #ifndef LANGDIR
@@ -60,9 +75,9 @@ diff -urN analog4.03.orig/anlghea2.h analog4.03/anlghea2.h
  /* A lock file to stop two processes trying to write the DNSFILE at once */ 
  
  #define DNS (DNS_NONE)
-diff -urN analog4.03.orig/anlghead.h analog4.03/anlghead.h
---- analog4.03.orig/anlghead.h	Sat Jan 29 17:01:09 2000
-+++ analog4.03/anlghead.h	Fri Feb  4 00:12:39 2000
+diff -urN analog-4.16.org/anlghead.h analog-4.16/anlghead.h
+--- analog-4.16.org/anlghead.h	Tue Feb 13 16:09:09 2001
++++ analog-4.16/anlghead.h	Mon Feb 26 21:02:30 2001
 @@ -19,19 +19,19 @@
  #define ANLGHEAD
  
@@ -81,7 +96,7 @@ diff -urN analog4.03.orig/anlghead.h analog4.03/anlghead.h
  #endif
  
  #ifndef ANALOGDIR
--#define ANALOGDIR "/usr/local/analog4.03/"
+-#define ANALOGDIR "/usr/local/analog/analog-4.16/"
 +#define ANALOGDIR ""
  #endif
  /* The directory where your analog stuff lives (or will live). You need to
@@ -117,15 +132,3 @@ diff -urN analog4.03.orig/anlghead.h analog4.03/anlghead.h
  /* the name of the default configuration file; see README.html for a
     description of this file. Use "none" (NOT ANALOGDIR"none"!) for no
     configuration file. */
---- analog4.03.orig/anlgform.pl Sat Jan 29 17:00:59 2000
-+++ analog4.03/anlgform.pl     Sat Feb  5 02:08:38 2000
-@@ -14,6 +14,7 @@
- # 1) uncomment (remove everything before $analog) and edit one of the next
- # two
- #    lines to give the location (full pathname) of the analog executable.
- #       Unix: $analog = '/usr/local/etc/httpd/analog4.03/analog';
-+$analog = '/usr/bin/analog';
- #       Windows: $analog = 'C:\program files\analog 4.03\analog.exe';
- # 2) If you're on Unix, edit the first line in this file to give the location
- #    of Perl (don't remove the #! though).
-

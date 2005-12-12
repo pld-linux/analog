@@ -73,15 +73,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %dir %{_datadir}/analog/lang
 %attr(755,root,root) %dir %{_datadir}/analog
 %attr(775,root,http) %dir /var/lib/analog
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/analog.cfg
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/analog.cfg
 %attr(755,root,root) %{_bindir}/analog
 %{_datadir}/analog/lang/*.*
 %{httpdir}/icons/*.gif
 %{httpdir}/icons/*.png
 %attr(755,root,root) %dir %{httpdir}/html/usage
-%verify(not size mtime md5) %{httpdir}/html/usage/analog.html
+%verify(not md5 mtime size) %{httpdir}/html/usage/analog.html
 
 %files form
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not size mtime md5) %{httpdir}/html/usage/anlgform.html
+%config(noreplace) %verify(not md5 mtime size) %{httpdir}/html/usage/anlgform.html
 %attr(755,root,root) %{httpdir}/cgi-bin/anlgform.pl

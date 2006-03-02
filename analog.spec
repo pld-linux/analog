@@ -32,14 +32,14 @@ Requires:	%{name} = %{version}-%{release}
 %description form
 Form interface to the analog httpd log analysis program. You should
 regenerate the form file to customize it for your server by running
-'analog -form +O/home/services/httpd/html/anlgform.html'
+'analog -form +O%{httpdir}/html/anlgform.html'
 after you have modified /etc/analog.cfg.
 
 %description form -l pl
 Interfejs w postaci formularza do programu analog. Powiniene¶
 wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 /etc/analog.cfg poprzez wykonanie polecenia:
-'analog -form +O/home/services/httpd/html/anlgform.html'
+'analog -form +O%{httpdir}/html/anlgform.html'
 
 %prep
 %setup  -q

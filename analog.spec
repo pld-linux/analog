@@ -1,9 +1,11 @@
+# TODO:
+# - /home/services/httpd ? Is it right place?
 Summary:	WWW server logfile analysis program
 Summary(pl):	Analizator logów serwera WWW
 Name:		analog
 Version:	6.0
-Release:	1
-License:	GPL
+Release:	2
+License:	GPL v2
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
 Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
@@ -30,14 +32,14 @@ Requires:	%{name} = %{version}-%{release}
 %description form
 Form interface to the analog httpd log analysis program. You should
 regenerate the form file to customize it for your server by running
-'analog -form +O/home/services/httpd/html/anlgform.html' after you
-have modified /etc/analog.cfg.
+'analog -form +O/home/services/httpd/html/anlgform.html'
+after you have modified /etc/analog.cfg.
 
 %description form -l pl
 Interfejs w postaci formularza do programu analog. Powiniene¶
 wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
-/etc/analog.cfg poprzez wykonanie polecenia: 'analog -form
-+O/home/services/httpd/html/anlgform.html'
+/etc/analog.cfg poprzez wykonanie polecenia:
+'analog -form +O/home/services/httpd/html/anlgform.html'
 
 %prep
 %setup  -q
@@ -52,7 +54,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{httpdir}/{icons,cgi-bin,html/usage} \
 	$RPM_BUILD_ROOT{%{_var}/lib/%{name},%{_datadir}/%{name}/lang} \
-	$RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}}
+	$RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir}/man1}
 
 install analog $RPM_BUILD_ROOT%{_bindir}
 install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.cfg
@@ -61,6 +63,7 @@ install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}
 install images/* $RPM_BUILD_ROOT%{httpdir}/icons
 install anlgform.html $RPM_BUILD_ROOT%{httpdir}/html/usage
 install anlgform.pl $RPM_BUILD_ROOT%{httpdir}/cgi-bin
+install analog.man $RPM_BUILD_ROOT%{_mandir}/man1/analog.1
 
 touch $RPM_BUILD_ROOT%{httpdir}/html/usage/analog.html
 
@@ -69,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* lang/*
+%doc docs/* lang/* examples how-to
 %attr(755,root,root) %dir %{_datadir}/analog/lang
 %attr(755,root,root) %dir %{_datadir}/analog
 %attr(775,root,http) %dir /var/lib/analog
@@ -80,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %{httpdir}/icons/*.png
 %attr(755,root,root) %dir %{httpdir}/html/usage
 %verify(not md5 mtime size) %{httpdir}/html/usage/analog.html
+%{_mandir}/man1/*.1*
 
 %files form
 %defattr(644,root,root,755)

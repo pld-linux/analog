@@ -84,7 +84,7 @@ diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
  
  #ifndef OUTFILE
 -#define OUTFILE "stdout"
-+#define OUTFILE "/home/httpd/html/usage/analog.html"
++#define OUTFILE "/home/services/httpd/html/usage/analog.html"
 +
  /* The default file for output. Use "stdout" for stdout. */
  #endif

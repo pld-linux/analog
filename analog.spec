@@ -47,6 +47,7 @@ wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
 
 %build
 %{__make} %{name} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags}" \
 	CEXTRAFLAGS="%{rpmcflags}"
 

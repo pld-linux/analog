@@ -1,7 +1,7 @@
 # TODO:
 # - /home/services/httpd ? Is it right place?
 Summary:	WWW server logfile analysis program
-Summary(pl):	Analizator logów serwera WWW
+Summary(pl.UTF-8):   Analizator logÃ³w serwera WWW
 Name:		analog
 Version:	6.0
 Release:	2
@@ -20,12 +20,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 WWW server logfile analysis program with lots of features.
 
-%description -l pl
-Analizator logów serwera WWW z wieloma opcjami.
+%description -l pl.UTF-8
+Analizator logÃ³w serwera WWW z wieloma opcjami.
 
 %package form
 Summary:	Form interface to analog
-Summary(pl):	Interfejs w postaci formularza do analoga
+Summary(pl.UTF-8):   Interfejs w postaci formularza do analoga
 Group:		Networking/Utilities
 Requires:	%{name} = %{version}-%{release}
 
@@ -35,9 +35,9 @@ regenerate the form file to customize it for your server by running
 'analog -form +O%{httpdir}/html/anlgform.html'
 after you have modified /etc/analog.cfg.
 
-%description form -l pl
-Interfejs w postaci formularza do programu analog. Powiniene¶
-wygenerowaæ nowy plik formularza po ustawieniu odpowiednich opcji w
+%description form -l pl.UTF-8
+Interfejs w postaci formularza do programu analog. PowinieneÅ›
+wygenerowaÄ‡ nowy plik formularza po ustawieniu odpowiednich opcji w
 /etc/analog.cfg poprzez wykonanie polecenia:
 'analog -form +O%{httpdir}/html/anlgform.html'
 

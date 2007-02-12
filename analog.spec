@@ -1,7 +1,7 @@
 # TODO:
 # - /home/services/httpd ? Is it right place?
 Summary:	WWW server logfile analysis program
-Summary(pl.UTF-8):   Analizator logów serwera WWW
+Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog
 Version:	6.0
 Release:	2
@@ -25,7 +25,7 @@ Analizator logów serwera WWW z wieloma opcjami.
 
 %package form
 Summary:	Form interface to analog
-Summary(pl.UTF-8):   Interfejs w postaci formularza do analoga
+Summary(pl.UTF-8):	Interfejs w postaci formularza do analoga
 Group:		Networking/Utilities
 Requires:	%{name} = %{version}-%{release}
 

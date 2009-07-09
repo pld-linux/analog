@@ -1,10 +1,8 @@
-# TODO:
-# - /home/services/httpd ? Is it right place?
 Summary:	WWW server logfile analysis program
 Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog
 Version:	6.0
-Release:	2
+Release:	2.1
 License:	GPL v2
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
@@ -15,7 +13,10 @@ Requires:	webserver
 URL:		http://www.analog.cx/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		httpdir	/home/services/httpd
+%define         _appdir         %{_datadir}/%{name}
+%define         _webapps        /etc/webapps
+%define         _webapp         %{name}
+%define         _sysconfdir     %{_webapps}/%{_webapp}
 
 %description
 WWW server logfile analysis program with lots of features.
@@ -32,14 +33,14 @@ Requires:	%{name} = %{version}-%{release}
 %description form
 Form interface to the analog httpd log analysis program. You should
 regenerate the form file to customize it for your server by running
-'analog -form +O%{httpdir}/html/anlgform.html'
+'analog -form +O%{_appdir}/html/anlgform.html'
 after you have modified /etc/analog.cfg.
 
 %description form -l pl.UTF-8
 Interfejs w postaci formularza do programu analog. Powinieneś
 wygenerować nowy plik formularza po ustawieniu odpowiednich opcji w
 /etc/analog.cfg poprzez wykonanie polecenia:
-'analog -form +O%{httpdir}/html/anlgform.html'
+'analog -form +O%{_appdir}/html/anlgform.html'
 
 %prep
 %setup  -q
@@ -53,20 +54,20 @@ wygenerować nowy plik formularza po ustawieniu odpowiednich opcji w
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{httpdir}/{icons,cgi-bin,html/usage} \
-	$RPM_BUILD_ROOT{%{_var}/lib/%{name},%{_datadir}/%{name}/lang} \
-	$RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT%{_appdir}/{icons,cgi-bin,html/usage,lang} \
+	$RPM_BUILD_ROOT{%{_var}/lib/%{name},%{_bindir},%{_sysconfdir}} \
+	$RPM_BUILD_ROOT%{_mandir}/man1
 
 install analog $RPM_BUILD_ROOT%{_bindir}
 install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{name}.cfg
-install lang/* $RPM_BUILD_ROOT%{_datadir}/%{name}/lang
+install lang/* $RPM_BUILD_ROOT%{_appdir}/lang
 install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}
-install images/* $RPM_BUILD_ROOT%{httpdir}/icons
-install anlgform.html $RPM_BUILD_ROOT%{httpdir}/html/usage
-install anlgform.pl $RPM_BUILD_ROOT%{httpdir}/cgi-bin
+install images/* $RPM_BUILD_ROOT%{_appdir}/icons
+install anlgform.html $RPM_BUILD_ROOT%{_appdir}/html/usage
+install anlgform.pl $RPM_BUILD_ROOT%{_appdir}/cgi-bin
 install analog.man $RPM_BUILD_ROOT%{_mandir}/man1/analog.1
 
-touch $RPM_BUILD_ROOT%{httpdir}/html/usage/analog.html
+touch $RPM_BUILD_ROOT%{_appdir}/html/usage/analog.html
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -74,19 +75,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc docs/* lang/* examples how-to
-%attr(755,root,root) %dir %{_datadir}/analog/lang
-%attr(755,root,root) %dir %{_datadir}/analog
-%attr(775,root,http) %dir /var/lib/analog
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/analog.cfg
+%attr(755,root,root) %dir %{_appdir}/lang
+%attr(755,root,root) %dir %{_appdir}
+%attr(775,root,http) %dir %{_var}/lib/%{name}
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.cfg
 %attr(755,root,root) %{_bindir}/analog
-%{_datadir}/analog/lang/*.*
-%{httpdir}/icons/*.gif
-%{httpdir}/icons/*.png
-%attr(755,root,root) %dir %{httpdir}/html/usage
-%verify(not md5 mtime size) %{httpdir}/html/usage/analog.html
+%{_appdir}/lang/*.*
+%{_appdir}/icons/*.gif
+%{_appdir}/icons/*.png
+%attr(755,root,root) %dir %{_appdir}/html/usage
+%verify(not md5 mtime size) %{_appdir}/html/usage/analog.html
 %{_mandir}/man1/*.1*
 
 %files form
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{httpdir}/html/usage/anlgform.html
-%attr(755,root,root) %{httpdir}/cgi-bin/anlgform.pl
+%config(noreplace) %verify(not md5 mtime size) %{_appdir}/html/usage/anlgform.html
+%attr(755,root,root) %{_appdir}/cgi-bin/anlgform.pl

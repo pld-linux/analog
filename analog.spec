@@ -1,3 +1,6 @@
+# TODO:
+# - /home/services/httpd ? Is it right place?
+# - support for webapps
 Summary:	WWW server logfile analysis program
 Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog

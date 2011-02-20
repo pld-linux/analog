@@ -5,7 +5,7 @@ Summary:	WWW server logfile analysis program
 Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog
 Version:	6.0
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html
@@ -81,9 +81,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %dir %{_appdir}/lang
 %attr(755,root,root) %dir %{_appdir}
 %attr(775,root,http) %dir %{_var}/lib/%{name}
+%dir %{_sysconfdir}
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}.cfg
 %attr(755,root,root) %{_bindir}/analog
+%dir %{_appdir}/lang
 %{_appdir}/lang/*.*
+%dir %{_appdir}/icons
 %{_appdir}/icons/*.gif
 %{_appdir}/icons/*.png
 %attr(755,root,root) %dir %{_appdir}/html/usage
@@ -93,4 +96,5 @@ rm -rf $RPM_BUILD_ROOT
 %files form
 %defattr(644,root,root,755)
 %config(noreplace) %verify(not md5 mtime size) %{_appdir}/html/usage/anlgform.html
+%dir %{_appdir}/cgi-bin
 %attr(755,root,root) %{_appdir}/cgi-bin/anlgform.pl

@@ -47,7 +47,7 @@ wygenerować nowy plik formularza po ustawieniu odpowiednich opcji w
 
 %prep
 %setup  -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__make} %{name} \

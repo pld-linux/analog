@@ -5,7 +5,7 @@ Summary:	WWW server logfile analysis program
 Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog
 Version:	6.0
-Release:	7
+Release:	8
 License:	GPL v2
 Group:		Networking/Utilities
 #Source0Download:	http://www.analog.cx/download.html

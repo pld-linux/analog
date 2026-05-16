@@ -1,46 +1,33 @@
-diff -urN analog-5.22/anlgform.html analog-5.22.new/anlgform.html
---- analog-5.22/anlgform.html	Wed Mar 20 10:38:41 2002
-+++ analog-5.22.new/anlgform.html	Fri Apr  5 12:38:44 2002
-@@ -3,7 +3,7 @@
- </head>
- 
- <body>
--<h1><!-- img src="/images/analogo.gif" alt="" --> Analog form interface</h1>
-+<h1><img src="/images/analogo.gif" alt="" --> Analog form interface</h1>
- 
- <!-- Make the edits below. You also need to edit anlgform.pl. -->
- 
-@@ -15,10 +15,12 @@
- 
+diff -urN analog-ce-6.0.18.orig2/anlgform.html analog-ce-6.0.18/anlgform.html
+--- analog-ce-6.0.18.orig2/anlgform.html	2024-08-14 16:39:50.000000000 +0200
++++ analog-ce-6.0.18/anlgform.html	2026-03-14 03:02:58.016015947 +0100
+@@ -15,9 +15,10 @@
+ <!-- form action="/cgi-bin/anlgform.pl" method="POST" -->
  <!-- Many systems will want the IMAGEDIR to be different on the form -->
  <!-- than from the command line, because it should not be within /cgi-bin/ -->
 -<!-- input type=hidden name="IMAGEDIR" value="/images/" -->
 +<!-- input type=hidden name="IMAGEDIR" value="/icons/" -->
- 
  <!-- Some users will want to set their logfile like this. -->
  <!-- input type=hidden name="LOGFILE" value="/usr/local/etc/httpd/logs/access_log" -->
 +<!-- input type=hidden name="LOGFILE" value="/usr/var/httpd/log/access_log" -->
-+
- 
  <!-- After you've made these edits, you can remove the "strong" lines below -->
- 
-diff -urN analog-5.22/anlgform.pl analog-5.22.new/anlgform.pl
---- analog-5.22/anlgform.pl	Wed Mar 20 10:38:41 2002
-+++ analog-5.22.new/anlgform.pl	Fri Apr  5 12:39:39 2002
-@@ -19,6 +19,7 @@
+ <hr>
+ <h2>1. Report choices</h2>
+diff -urN analog-ce-6.0.18.orig2/anlgform.pl analog-ce-6.0.18/anlgform.pl
+--- analog-ce-6.0.18.orig2/anlgform.pl	2024-08-14 16:39:50.000000000 +0200
++++ analog-ce-6.0.18/anlgform.pl	2026-03-14 03:02:58.016057249 +0100
+@@ -24,6 +24,7 @@
  #    of Perl (don't remove the #! though).
  # 3) You also need to edit anlgform.html if you want to use the form.
  # 4) Add to the forbidden commands below if you want.
-+$analog='/usr/bin/analog'
++$analog='/usr/bin/analog';
  
  @forbidden = qw(LOGFORMAT APACHELOGFORMAT DEFAULTLOGFORMAT
  		APACHEDEFAULTLOGFORMAT HEADERFILE FOOTERFILE UNCOMPRESS
-Binary files analog-5.22/src/alias.o and analog-5.22.new/src/alias.o differ
-Binary files analog-5.22/src/analog.o and analog-5.22.new/src/analog.o differ
-diff -urN analog-5.22/src/anlghea2.h analog-5.22.new/src/anlghea2.h
---- analog-5.22/src/anlghea2.h	Wed Mar 20 10:38:51 2002
-+++ analog-5.22.new/src/anlghea2.h	Fri Apr  5 12:40:33 2002
-@@ -50,11 +50,12 @@
+diff -urN analog-ce-6.0.18.orig2/src/anlghea2.h analog-ce-6.0.18/src/anlghea2.h
+--- analog-ce-6.0.18.orig2/src/anlghea2.h	2024-08-14 16:39:50.000000000 +0200
++++ analog-ce-6.0.18/src/anlghea2.h	2026-03-14 03:02:58.015967301 +0100
+@@ -55,11 +55,11 @@
  #endif
  
  #ifndef NODNS
@@ -51,14 +38,13 @@ diff -urN analog-5.22/src/anlghea2.h analog-5.22.new/src/anlghea2.h
  
 -#define DNSLOCKFILE "dnslock"
 +#define DNSLOCKFILE "/var/lock/dnslock"
-+
  /* A lock file to stop two processes trying to write the DNSFILE at once */ 
  
  #define DNS (DNS_NONE)
-diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
---- analog-5.22/src/anlghead.h	Wed Mar 20 10:38:52 2002
-+++ analog-5.22.new/src/anlghead.h	Fri Apr  5 12:42:55 2002
-@@ -19,30 +19,31 @@
+diff -urN analog-ce-6.0.18.orig2/src/anlghead.h analog-ce-6.0.18/src/anlghead.h
+--- analog-ce-6.0.18.orig2/src/anlghead.h	2024-08-14 16:39:50.000000000 +0200
++++ analog-ce-6.0.18/src/anlghead.h	2026-03-14 03:02:58.015896867 +0100
+@@ -24,13 +24,13 @@
  #define ANLGHEAD_H
  
  #ifndef HOSTNAME
@@ -74,6 +60,8 @@ diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
  /* The URL of your host's home page, for linking to at the top of the
     output; use "none" for no linking. */
  #endif
+@@ -48,18 +48,18 @@
+ #endif
  
  #ifndef LOGFILE
 -#define LOGFILE "logfile.log"
@@ -85,7 +73,6 @@ diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
  #ifndef OUTFILE
 -#define OUTFILE "stdout"
 +#define OUTFILE "/home/services/httpd/html/usage/analog.html"
-+
  /* The default file for output. Use "stdout" for stdout. */
  #endif
  
@@ -95,7 +82,7 @@ diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
  /* URL of the directory where the images for the graphical reports live.
     The URL can be absolute, or relative to the output page: e.g., just the
     empty string "" for the same directory as the output page. */
-@@ -61,7 +62,7 @@
+@@ -84,7 +84,7 @@
  #endif
  
  #ifndef DEFAULTCONFIGFILE
@@ -104,7 +91,7 @@ diff -urN analog-5.22/src/anlghead.h analog-5.22.new/src/anlghead.h
  /* The name of the default configuration file. */
  #endif
  
-@@ -82,7 +83,7 @@
+@@ -105,7 +105,7 @@
     directory. This may or may not work, so it's better to specify a location
     explicitly here if you know where the files will be kept. */
  #ifndef LANGDIR

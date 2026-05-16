@@ -4,16 +4,19 @@
 Summary:	WWW server logfile analysis program
 Summary(pl.UTF-8):	Analizator logów serwera WWW
 Name:		analog
-Version:	6.0
-Release:	8
+Version:	6.0.18
+Release:	1
 License:	GPL v2
 Group:		Networking/Utilities
-#Source0Download:	http://www.analog.cx/download.html
-Source0:	http://www.analog.cx/%{name}-%{version}.tar.gz
-# Source0-md5:	743d03a16eb8c8488205ae63cdb671cd
+#Source0Download:	https://github.com/c-amie/analog-ce/releases
+Source0:	https://github.com/c-amie/analog-ce/archive/refs/tags/%{version}.tar.gz
+# Source0-md5:	334cfdc27f61797df12f1c40f4b2ce62
 Patch0:		%{name}-config.patch
+Patch1:		%{name}-system-pcre2.patch
+BuildRequires:	pcre2-8-devel
+BuildRequires:	pkgconfig
 Requires:	webserver
-URL:		http://www.analog.cx/
+URL:		https://github.com/c-amie/analog-ce
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _appdir         %{_datadir}/%{name}
@@ -46,14 +49,16 @@ wygenerować nowy plik formularza po ustawieniu odpowiednich opcji w
 'analog -form +O%{_appdir}/html/anlgform.html'
 
 %prep
-%setup  -q
+%setup -q -n %{name}-ce-%{version}
 %patch -P0 -p1
+%patch -P1 -p1
 
 %build
-%{__make} %{name} \
+%{__make} -C src \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}" \
-	CEXTRAFLAGS="%{rpmcflags}"
+	CFLAGS="%{rpmcppflags} %{rpmcflags} $(pkg-config --cflags libpcre2-8)" \
+	DEFS="-DHAVE_PCRE" \
+	LIBS="$(pkg-config --libs libpcre2-8) -lm"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -62,9 +67,9 @@ install -d $RPM_BUILD_ROOT%{_appdir}/{icons,cgi-bin,html/usage,lang} \
 	$RPM_BUILD_ROOT%{_mandir}/man1
 
 install analog $RPM_BUILD_ROOT%{_bindir}
-install analog.cfg $RPM_BUILD_ROOT/etc/%{name}.cfg
+install analog.cfg-sample $RPM_BUILD_ROOT/etc/%{name}.cfg
 install lang/* $RPM_BUILD_ROOT%{_appdir}/lang
-install analog.cfg $RPM_BUILD_ROOT%{_sysconfdir}
+install analog.cfg-sample $RPM_BUILD_ROOT%{_sysconfdir}/analog.cfg
 install images/* $RPM_BUILD_ROOT%{_appdir}/icons
 install anlgform.html $RPM_BUILD_ROOT%{_appdir}/html/usage
 install anlgform.pl $RPM_BUILD_ROOT%{_appdir}/cgi-bin
@@ -82,10 +87,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(775,root,http) %dir %{_var}/lib/%{name}
 %dir %{_sysconfdir}
 %config(noreplace) %verify(not md5 mtime size) /etc/%{name}.cfg
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/analog.cfg
 %attr(755,root,root) %{_bindir}/analog
 %dir %{_appdir}/lang
 %{_appdir}/lang/*.*
 %dir %{_appdir}/icons
+%{_appdir}/icons/*.css
 %{_appdir}/icons/*.gif
 %{_appdir}/icons/*.png
 %dir %{_appdir}/html
